@@ -11,10 +11,10 @@ server.use(express.urlencoded({extended: true }));
 server.use(express.static('./public'));
 
 
-// server.use((req, res, next) =>{
-// });
-
-
+server.use((req, res, next) =>{
+    res.set("Access-Control-Allow-Origin", "*");
+    next();
+});
 
 //路由
 server.use('/api', [userRouter,studentRouter]);

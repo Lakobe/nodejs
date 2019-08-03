@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-
+const bcryptjs = require("bcryptjs");
 const UserModel = require("../models/user");
 
 //注册
@@ -9,17 +9,21 @@ router.post('/sign-up',(req, res) =>{
     let password = req.body.password;
 
     let newPassword = bcryptjs.hashSync(password, 10);
+
     let user = new UserModel({
         username,
         password: newPassword
     });
 
-    user.save().then(() =>{
+    user
+    .save()
+    .then(() =>{
         res.send({
             code: 0,
             msg: "注册成功"
         });
-    }).catch(error =>{
+    })
+    .catch(error =>{
         res.send({
             code: -1,
             msg: error.message
@@ -33,7 +37,7 @@ router.post('/sign-up',(req, res) =>{
  * 登录
  * POST /api/sign-in
  */
-router.post("/sign-in",async(req,res) => {
+router.post("/sign-in", async(req, res) => {
     let username = req.body.username;
     let password = req.body.password;
 
@@ -63,16 +67,6 @@ router.post("/sign-in",async(req,res) => {
         });
     }
 });
-
-
-
-
-
-
-
-
-
-
 
 
 // 暴露 router

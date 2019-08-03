@@ -36,7 +36,7 @@ router.get('/student',async(req, res) =>{
 /**
  * 
  * 学生添加
- * POST /api//student
+ * POST /api/student
  */
 router.post('/student',async(req, res) => {
     let student = new StudentModel(req.body);
@@ -55,10 +55,4 @@ router.post('/student',async(req, res) => {
 });
 
 
-
-
-
-
-
-
-module.exports = router;
+module.exports =router;
