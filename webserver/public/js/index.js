@@ -9,6 +9,21 @@ const setUserInfo = () => {
   }
 };
 
+const getStudentList = () => {
+  $.ajax({
+    url: `${BaseURL}/api/student`,
+    method: "GET",
+    headers: {
+      AccessToken: sessionStorage.getItem("token")
+    },
+    success: res => {
+      console.log(res);
+    }
+  });
+};
+
 $(function() {
   setUserInfo();
+
+  getStudentList();
 });
