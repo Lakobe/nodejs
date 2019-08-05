@@ -8,7 +8,8 @@ const loginApi = (username, password) => {
     },
     res => {
       if (res.code === 0) {
-        sessionStorage.setItem("userInfo", JSON.stringify(res.data));
+        sessionStorage.setItem("userInfo", JSON.stringify(res.data.userInfo));
+        sessionStorage.setItem("token", res.data.token);
         alert("登录成功");
         location.href = "/index.html";
       } else {
